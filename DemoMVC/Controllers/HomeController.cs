@@ -20,12 +20,22 @@ public class HomeController : Controller
     [HttpPost]
      public IActionResult Index(string FullName, string Address)
     {
-        string strOutput  = "Xin chào" + FullName + "đến từ " + Address;
-        ViewBag.Message = strOutput;
+        string strResult  = "Xin chào" + FullName + "đến từ " + Address;
+        ViewBag.Message = strResult;
         return View();
     }
 
-
+    public IActionResult Demo()
+    {
+        return View();
+    }
+    [HttpPost]
+    public IActionResult Demo(string FullName)
+    {
+        string  strResult = "Xin Chào" + FullName;
+        ViewBag.thongBao = strResult;
+        return View();
+    }
     public IActionResult Privacy()
     {
         return View();
