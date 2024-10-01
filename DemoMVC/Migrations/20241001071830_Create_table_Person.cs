@@ -7,15 +7,14 @@ namespace DemoMVC.Migrations
     /// <inheritdoc />
     public partial class Create_table_Person : Migration
     {
+     
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Employee");
-
             migrationBuilder.DropTable(
                 name: "Lophoc");
-
             migrationBuilder.CreateTable(
                 name: "Person",
                 columns: table => new
@@ -32,11 +31,10 @@ namespace DemoMVC.Migrations
         }
 
         /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
+         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Person");
-
             migrationBuilder.CreateTable(
                 name: "Employee",
                 columns: table => new
@@ -49,7 +47,6 @@ namespace DemoMVC.Migrations
                 {
                     table.PrimaryKey("PK_Employee", x => x.EmployeeId);
                 });
-
             migrationBuilder.CreateTable(
                 name: "Lophoc",
                 columns: table => new

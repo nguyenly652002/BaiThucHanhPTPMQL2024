@@ -18,14 +18,40 @@ namespace DemoMVC.Controllers
         {
             _context = context;
         }
+
+        // GET: Employee
         public async Task<IActionResult> Index()
         {
             return View(await _context.Employee.ToListAsync());
         }
+
+        // GET: Employee/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var employee = await _context.Employee
+                .FirstOrDefaultAsync(m => m.CCCD == id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            return View(employee);
+        }
+
+        // GET: Employee/Create
         public IActionResult Create()
         {
             return View();
         }
+
+        // POST: Employee/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("EmployeeId,Nghenghiep,CCCD,Hoten,Quequan")] Employee employee)
@@ -38,6 +64,8 @@ namespace DemoMVC.Controllers
             }
             return View(employee);
         }
+
+        // GET: Employee/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -52,6 +80,10 @@ namespace DemoMVC.Controllers
             }
             return View(employee);
         }
+
+        // POST: Employee/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,Nghenghiep,CCCD,Hoten,Quequan")] Employee employee)
@@ -83,6 +115,8 @@ namespace DemoMVC.Controllers
             }
             return View(employee);
         }
+
+        // GET: Employee/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -99,6 +133,8 @@ namespace DemoMVC.Controllers
 
             return View(employee);
         }
+
+        // POST: Employee/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
