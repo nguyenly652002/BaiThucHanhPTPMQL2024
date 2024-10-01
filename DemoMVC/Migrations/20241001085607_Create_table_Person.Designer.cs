@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241001071830_Create_table_Person")]
+    [Migration("20241001085607_Create_table_Person")]
     partial class Create_table_Person
     {
         /// <inheritdoc />
@@ -25,11 +25,6 @@ namespace DemoMVC.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Hoten")
                         .HasColumnType("TEXT");
 
@@ -38,26 +33,7 @@ namespace DemoMVC.Migrations
 
                     b.HasKey("CCCD");
 
-                    b.ToTable("Persons");
-
-                    b.HasDiscriminator().HasValue("Person");
-
-                    b.UseTphMappingStrategy();
-                });
-
-            modelBuilder.Entity("DemoMVC.Models.Employee", b =>
-                {
-                    b.HasBaseType("DemoMVC.Models.Person");
-
-                    b.Property<string>("EmployeeId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Nghenghiep")
-                        .HasColumnType("TEXT");
-
-                    b.ToTable("Persons");
-
-                    b.HasDiscriminator().HasValue("Employee");
+                    b.ToTable("Person");
                 });
 #pragma warning restore 612, 618
         }

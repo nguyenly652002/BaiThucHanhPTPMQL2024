@@ -5,10 +5,39 @@
 namespace DemoMVC.Migrations
 {
     /// <inheritdoc />
-    public partial class Create_table_Employee : Migration
+    public partial class Create_table_Person : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_Persons",
+                table: "Persons");
+
+            migrationBuilder.DropColumn(
+                name: "Discriminator",
+                table: "Persons");
+
+            migrationBuilder.DropColumn(
+                name: "EmployeeId",
+                table: "Persons");
+
+            migrationBuilder.DropColumn(
+                name: "Nghenghiep",
+                table: "Persons");
+
+            migrationBuilder.RenameTable(
+                name: "Persons",
+                newName: "Person");
+
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_Person",
+                table: "Person",
+                column: "CCCD");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Person",
@@ -41,35 +70,6 @@ namespace DemoMVC.Migrations
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Persons",
                 table: "Persons",
-                column: "CCCD");
-        }
-
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_Persons",
-                table: "Persons");
-
-            migrationBuilder.DropColumn(
-                name: "Discriminator",
-                table: "Persons");
-
-            migrationBuilder.DropColumn(
-                name: "EmployeeId",
-                table: "Persons");
-
-            migrationBuilder.DropColumn(
-                name: "Nghenghiep",
-                table: "Persons");
-
-            migrationBuilder.RenameTable(
-                name: "Persons",
-                newName: "Person");
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_Person",
-                table: "Person",
                 column: "CCCD");
         }
     }
