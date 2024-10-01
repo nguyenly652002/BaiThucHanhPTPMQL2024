@@ -14,7 +14,6 @@ namespace DemoMVC.Data
         {
         }
 
-        public DbSet<Employee> Employee { get; set; } = default!;
-        public DbSet<Lophoc> Lophoc { get; set; } = default!;
+        public DbSet<Person> Person { get; set; } = default!;
     }
 }

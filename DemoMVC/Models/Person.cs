@@ -1,9 +1,12 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace DemoMVC.Models
 {
     public class Person
     {
-        public string? PersonId { get; set; }
-        public string? FullName { get; set; }
-        public string? Address  { get; set; }
+        [Key]
+        public int CCCD { get; set; }
+        public string? Hoten { get; set; }
+        public string? Quequan { get; set;}
     }
 }

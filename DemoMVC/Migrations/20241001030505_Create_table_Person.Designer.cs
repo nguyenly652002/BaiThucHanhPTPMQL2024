@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240917034327_Create_table_Emloyee")]
-    partial class Create_table_Emloyee
+    [Migration("20241001030505_Create_table_Person")]
+    partial class Create_table_Person
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,17 +19,21 @@ namespace DemoMVC.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
 
-            modelBuilder.Entity("DemoMVC.Models.Employee", b =>
+            modelBuilder.Entity("DemoMVC.Models.Person", b =>
                 {
-                    b.Property<string>("EmployeeId")
+                    b.Property<int>("CCCD")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Hoten")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("FullName")
+                    b.Property<string>("Quequan")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("EmployeeId");
+                    b.HasKey("CCCD");
 
-                    b.ToTable("Employee");
+                    b.ToTable("Person");
                 });
 #pragma warning restore 612, 618
         }
